@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Переход в банк Кубань Кредит</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             display: flex;
@@ -13,30 +18,77 @@
             justify-content: center;
             height: 100vh;
             background-color: #f4f4f4;
+            padding: 20px;
         }
-        input, a {
-            margin: 10px;
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 15px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 15px;
+            background: #fff;
+        }
+        input {
+            flex: 1;
             padding: 10px;
             font-size: 16px;
+            border: none;
+            outline: none;
+        }
+        .clear-btn {
+            background: red;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .clear-btn:hover {
+            background: darkred;
+        }
+        .link-container {
+            margin-top: 10px;
         }
         a {
-            display: inline-block;
+            display: block;
             text-decoration: none;
             background-color: #007bff;
             color: white;
-            padding: 10px 15px;
+            padding: 12px;
             border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
         }
-        a:disabled {
-            background-color: grey;
-            pointer-events: none;
+        a:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <h2>Введите ссылку НСПК:</h2>
-    <input type="text" id="nspkLink" placeholder="Введите ссылку...">
-    <p id="bankLink">Обновленная ссылка: <a id="updatedLink" href="#">Перейти в банк Кубань Кредит</a></p>
+    <div class="container">
+        <h2>Введите ссылку НСПК:</h2>
+        <div class="input-group">
+            <input type="text" id="nspkLink" placeholder="Введите ссылку...">
+            <button class="clear-btn" onclick="clearInput()">×</button>
+        </div>
+        <div class="link-container">
+            <p>Обновленная ссылка:</p>
+            <a id="updatedLink" href="#">Перейти в банк Кубань Кредит</a>
+        </div>
+    </div>
 
     <script>
         document.getElementById("nspkLink").addEventListener("input", updateBankLink);
@@ -46,6 +98,11 @@
             link = link.replace(/^https?:\/\//, "");
             const updatedHref = `bank100000000050://${link}`;
             document.getElementById("updatedLink").href = updatedHref;
+        }
+
+        function clearInput() {
+            document.getElementById("nspkLink").value = "";
+            updateBankLink();
         }
     </script>
 </body>
