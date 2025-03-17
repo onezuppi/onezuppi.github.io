@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Переход в банк Кубань Кредит</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        input, a {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+        }
+        a:disabled {
+            background-color: grey;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Введите ссылку НСПК:</h2>
+    <input type="text" id="nspkLink" placeholder="Введите ссылку...">
+    <p id="bankLink">Обновленная ссылка: <a id="updatedLink" href="#">Перейти в банк Кубань Кредит</a></p>
+
+    <script>
+        document.getElementById("nspkLink").addEventListener("input", updateBankLink);
+
+        function updateBankLink() {
+            let link = document.getElementById("nspkLink").value.trim();
+            link = link.replace(/^https?:\/\//, "");
+            const updatedHref = `bank100000000050?id=sbp&link=${encodeURIComponent(link)}`;
+            document.getElementById("updatedLink").href = updatedHref;
+        }
+    </script>
+</body>
+</html>
