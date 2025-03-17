@@ -44,7 +44,7 @@
         function updateBankLink() {
             let link = document.getElementById("nspkLink").value.trim();
             link = link.replace(/^https?:\/\//, "");
-            const updatedHref = `bank100000000050://${encodeURIComponent(link)}`;
+            const updatedHref = `bank100000000050://${link}`;
             document.getElementById("updatedLink").href = updatedHref;
         }
     </script>
